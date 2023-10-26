@@ -1,12 +1,11 @@
 package com.dream.application.domain.team.entity;
 
-import com.dream.application.domain.match.entity.Match;
 import com.dream.application.domain.player.entity.Player;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Getter
@@ -21,12 +20,6 @@ public class Team {
     @Enumerated(EnumType.STRING)
     private League league;
 
-    @ManyToMany
-    @JoinTable(name = "team_match",
-            joinColumns = @JoinColumn(name = "team_id"),
-            inverseJoinColumns = @JoinColumn(name = "match_id"))
-    private Set<Match> matches;
-
     @OneToMany(mappedBy = "team")
-    private Set<Player> players;
+    private List<Player> players;
 }

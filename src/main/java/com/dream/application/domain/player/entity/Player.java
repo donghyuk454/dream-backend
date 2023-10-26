@@ -1,12 +1,9 @@
 package com.dream.application.domain.player.entity;
 
 import com.dream.application.domain.team.entity.Team;
-import com.dream.application.domain.user.entity.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-
-import java.util.Set;
 
 @Entity
 @Getter
@@ -19,10 +16,7 @@ public class Player {
     @Embedded
     private PlayerDetails playerDetails;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "team_id")
     private Team team;
-
-    @ManyToMany(mappedBy = "subscribedPlayers")
-    private Set<User> subscribers;
 }
