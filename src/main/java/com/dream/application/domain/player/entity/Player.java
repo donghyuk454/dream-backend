@@ -16,8 +16,8 @@ public class Player {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long playerId;
 
-    private String name;
-    private int number;
+    @Embedded
+    private PlayerDetails playerDetails;
 
     @ManyToOne
     @JoinColumn(name = "team_id")
