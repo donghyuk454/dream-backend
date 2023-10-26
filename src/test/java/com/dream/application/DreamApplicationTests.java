@@ -1,4 +1,4 @@
-package com.mong.dream;
+package com.dream.application;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
