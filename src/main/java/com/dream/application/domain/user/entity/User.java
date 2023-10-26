@@ -1,10 +1,8 @@
 package com.dream.application.domain.user.entity;
-import com.dream.application.domain.player.entity.Player;
+import com.dream.application.domain.subscribe.entity.UserSubscription;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-
-import java.util.Set;
 
 @Entity
 @Getter
@@ -14,9 +12,6 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
 
-    @ManyToMany
-    @JoinTable(name = "user_subscribe",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "subscribe_id"))
-    private Set<Player> subscribedPlayers;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private UserSubscription userSubscription;
 }
