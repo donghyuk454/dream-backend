@@ -1,12 +1,14 @@
 package com.dream.application.domain.user.entity;
 import com.dream.application.domain.player.entity.Player;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.util.Set;
 
 @Entity
 @Getter
+@AllArgsConstructor
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

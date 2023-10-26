@@ -9,7 +9,8 @@ import java.util.Set;
 
 @Entity
 @Getter
-public class Subscription {
+@AllArgsConstructor
+public class Subscription extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long subscribeId;

@@ -3,10 +3,12 @@ package com.dream.application.domain.match.entity;
 import com.dream.application.common.entity.BaseEntity;
 import com.dream.application.domain.team.entity.Team;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Entity
 @Getter
+@AllArgsConstructor
 public class TeamMatch extends BaseEntity {
 
     private Boolean isHome;
