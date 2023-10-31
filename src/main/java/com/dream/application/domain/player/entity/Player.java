@@ -4,19 +4,22 @@ import com.dream.application.domain.team.entity.Team;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
+@Table(name = "PLAYER")
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 public class Player {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "PLAYER_ID")
     private Long playerId;
 
     @Embedded
     private PlayerDetails playerDetails;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "team_id")
+    @JoinColumn(name = "TEAM_ID")
     private Team team;
 }

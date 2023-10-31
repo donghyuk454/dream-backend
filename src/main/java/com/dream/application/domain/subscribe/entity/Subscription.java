@@ -5,18 +5,24 @@ import com.dream.application.domain.player.entity.Player;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
+@Table(name = "SUBSCRIPTION")
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 public class Subscription extends BaseEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long subscribeId;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "SUBSCRIPTION_ID")
+    private Long subscriptionId;
 
-    @OneToMany(mappedBy = "userSubscription")
-    private UserSubscription userSubscription;
+    @OneToMany(mappedBy = "subscription", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<MemberSubscription> userSubscriptions;
 
     @OneToOne
+    @JoinColumn(name = "PLAYER_ID")
     private Player player;
 }
