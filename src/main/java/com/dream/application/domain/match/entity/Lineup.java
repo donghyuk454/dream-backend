@@ -1,10 +1,12 @@
 package com.dream.application.domain.match.entity;
 
 import com.dream.application.common.entity.BaseEntity;
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "LINEUP")

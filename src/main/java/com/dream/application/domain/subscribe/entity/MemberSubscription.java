@@ -1,10 +1,11 @@
 package com.dream.application.domain.subscribe.entity;
 
 import com.dream.application.common.entity.BaseEntity;
-import com.dream.application.domain.user.member.Member;
-import jakarta.persistence.*;
+import com.dream.application.domain.member.entity.Member;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "MEMBER_SUBSCRIPTION")

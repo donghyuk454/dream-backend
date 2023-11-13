@@ -2,11 +2,12 @@ package com.dream.application.domain.subscribe.entity;
 
 import com.dream.application.common.entity.BaseEntity;
 import com.dream.application.domain.player.entity.Player;
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
 
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -15,7 +16,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Subscription extends BaseEntity {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "SUBSCRIPTION_ID")
     private Long subscriptionId;
 
