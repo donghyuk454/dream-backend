@@ -1,15 +1,22 @@
 package com.dream.application.batch.match.job.step.reader;
 
+import com.dream.application.batch.match.job.dto.ItemBuffer;
+import com.dream.application.batch.match.job.dto.MatchApiResponse;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.item.ItemReader;
-import org.springframework.batch.item.NonTransientResourceException;
-import org.springframework.batch.item.ParseException;
-import org.springframework.batch.item.UnexpectedInputException;
 import org.springframework.stereotype.Component;
 
+@Slf4j
 @Component
-public class MatchReader implements ItemReader<String> {
+@RequiredArgsConstructor
+public class MatchReader implements ItemReader<MatchApiResponse> {
+    private final ItemBuffer<MatchApiResponse> itemBuffer;
     @Override
-    public String read() throws Exception, UnexpectedInputException, ParseException, NonTransientResourceException {
-        return null;
+    public MatchApiResponse read() {
+        if(itemBuffer.isEmpty())
+            return null;
+
+        return itemBuffer.poll();
     }
 }
