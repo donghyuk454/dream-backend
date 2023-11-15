@@ -6,12 +6,13 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import java.io.Serializable;
 
 @Embeddable
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
-public class TeamMatchId {
+public class TeamMatchId implements Serializable {
     @Column(name = "TEAM_ID")
     private Long teamId;
     @Column(name = "MATCH_ID")
