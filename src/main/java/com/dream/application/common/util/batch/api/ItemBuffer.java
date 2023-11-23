@@ -27,4 +27,8 @@ public class ItemBuffer<T> {
     public boolean isEmpty() {
         return buffer.isEmpty();
     }
+
+    public Integer size() {
+        return buffer.size();
+    }
 }
