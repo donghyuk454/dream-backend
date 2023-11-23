@@ -1,4 +1,4 @@
-package com.dream.application.batch.match.job.dto;
+package com.dream.application.common.util.batch.api;
 
 import java.util.List;
 import java.util.PriorityQueue;

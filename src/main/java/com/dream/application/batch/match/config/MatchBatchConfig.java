@@ -1,11 +1,11 @@
 package com.dream.application.batch.match.config;
 
-import com.dream.application.batch.match.job.dto.ItemBuffer;
+import com.dream.application.common.util.batch.api.ItemBuffer;
 import com.dream.application.batch.match.job.dto.MatchApiResponse;
 import com.dream.application.batch.match.job.step.processor.MatchProcessor;
 import com.dream.application.batch.match.job.step.reader.MatchReader;
 import com.dream.application.batch.match.job.step.writer.MatchWriter;
-import com.dream.application.batch.match.job.tasklet.MatchApiTasklet;
+import com.dream.application.batch.match.job.step.tasklet.MatchApiTasklet;
 import com.dream.application.domain.match.entity.Match;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,6 +14,7 @@ import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.JobScope;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
+import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

@@ -1,6 +1,6 @@
-package com.dream.application.batch.match.job.tasklet;
+package com.dream.application.batch.match.job.step.tasklet;
 
-import com.dream.application.batch.match.job.dto.ItemBuffer;
+import com.dream.application.common.util.batch.api.ItemBuffer;
 import com.dream.application.batch.match.job.dto.MatchApiResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
