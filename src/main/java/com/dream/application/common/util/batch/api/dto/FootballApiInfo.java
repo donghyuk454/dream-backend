@@ -1,4 +1,4 @@
-package com.dream.application.common.util.batch.dto;
+package com.dream.application.common.util.batch.api.dto;
 
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;

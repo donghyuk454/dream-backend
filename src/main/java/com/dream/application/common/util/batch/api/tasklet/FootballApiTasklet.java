@@ -1,4 +1,4 @@
-package com.dream.application.common.util.batch.tasklet;
+package com.dream.application.common.util.batch.api.tasklet;
 
 import com.dream.application.common.util.batch.api.ItemBuffer;
 import com.dream.application.common.util.batch.dto.FootballApiBaseResponse;
