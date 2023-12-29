@@ -1,15 +1,13 @@
 package com.dream.application.common.util.batch.api;
 
-import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Queue;
+import java.util.*;
 
 public class ItemBuffer<T> {
 
     private final Queue<T> buffer;
 
     public ItemBuffer() {
-        this.buffer = new PriorityQueue<>();
+        this.buffer = new LinkedList<>();
     }
 
     public void add(T item) {
