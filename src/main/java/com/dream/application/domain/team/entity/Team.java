@@ -1,5 +1,6 @@
 package com.dream.application.domain.team.entity;
 
+import com.dream.application.domain.league.entity.League;
 import com.dream.application.domain.player.entity.Player;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,8 +23,7 @@ public class Team {
     @Column(name = "NAME")
     private String name;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "LEAGUE")
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private League league;
 
     @OneToMany(mappedBy = "team")
