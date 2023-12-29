@@ -1,16 +1,19 @@
-package com.dream.application.common.util.batch.dto;
+package com.dream.application.common.util.batch.api.dto;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class FootballApiBaseResponse<T> {
+public class FootballApiBaseResponse<P, T> {
 
     private String get;
-    private List<String> parameters;
+    private Paging paging;
+    private P parameters;
     private List<String> errors;
     private Integer results;
     private List<T> response;
