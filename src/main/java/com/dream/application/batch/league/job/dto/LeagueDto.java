@@ -11,6 +11,9 @@ public class LeagueDto {
     private String logo;
 
     public League toLeague() {
-        return new League(id.longValue(), name, type, logo);
+        League league = new League(null, name, type, logo);
+        league.setFbaId(id);
+
+        return league;
     }
 }
