@@ -1,5 +1,6 @@
 package com.dream.application.domain.league.entity;
 
+import com.dream.application.common.entity.FootballEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +12,7 @@ import javax.persistence.*;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class League {
+public class League extends FootballEntity {
 
     @Id @Column(name = "LEAGUE_ID")
     private Long leagueId;

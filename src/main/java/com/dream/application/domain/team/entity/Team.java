@@ -1,5 +1,6 @@
 package com.dream.application.domain.team.entity;
 
+import com.dream.application.common.entity.FootballEntity;
 import com.dream.application.domain.league.entity.League;
 import com.dream.application.domain.player.entity.Player;
 import lombok.AllArgsConstructor;
@@ -14,7 +15,7 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Team {
+public class Team extends FootballEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "TEAM_ID")

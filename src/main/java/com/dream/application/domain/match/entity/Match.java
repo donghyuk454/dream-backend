@@ -1,6 +1,6 @@
 package com.dream.application.domain.match.entity;
 
-import com.dream.application.common.entity.BaseEntity;
+import com.dream.application.common.entity.FootballEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +14,7 @@ import java.util.Set;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Match extends BaseEntity {
+public class Match extends FootballEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "MATCH_ID")
