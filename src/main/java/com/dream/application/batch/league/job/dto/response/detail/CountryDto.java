@@ -1,4 +1,4 @@
-package com.dream.application.batch.league.job.dto;
+package com.dream.application.batch.league.job.dto.response.detail;
 
 import lombok.Data;
 
