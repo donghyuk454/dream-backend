@@ -1,7 +1,7 @@
 package com.dream.application.batch.league.job.step.tasklet;
 
-import com.dream.application.batch.league.job.dto.LeagueApiResponse;
-import com.dream.application.batch.league.job.dto.SeasonParameter;
+import com.dream.application.batch.league.job.dto.response.LeagueApiResponse;
+import com.dream.application.batch.league.job.dto.request.SeasonParameter;
 import com.dream.application.common.util.batch.api.ItemBuffer;
 import com.dream.application.common.util.batch.api.dto.FootballApiInfo;
 import com.dream.application.common.util.batch.api.tasklet.FootballApiTasklet;

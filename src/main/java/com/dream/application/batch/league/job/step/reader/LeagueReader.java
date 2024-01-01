@@ -1,6 +1,6 @@
 package com.dream.application.batch.league.job.step.reader;
 
-import com.dream.application.batch.league.job.dto.LeagueApiResponse;
+import com.dream.application.batch.league.job.dto.response.LeagueApiResponse;
 import com.dream.application.common.util.batch.api.ItemBuffer;
 import lombok.AllArgsConstructor;
 import org.springframework.batch.item.ItemReader;

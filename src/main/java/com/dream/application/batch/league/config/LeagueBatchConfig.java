@@ -1,6 +1,6 @@
 package com.dream.application.batch.league.config;
 
-import com.dream.application.batch.league.job.dto.LeagueApiResponse;
+import com.dream.application.batch.league.job.dto.response.LeagueApiResponse;
 import com.dream.application.batch.league.job.step.processor.LeagueProcessor;
 import com.dream.application.batch.league.job.step.reader.LeagueReader;
 import com.dream.application.batch.league.job.step.tasklet.LeagueApiTasklet;
