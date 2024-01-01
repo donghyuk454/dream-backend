@@ -1,7 +1,7 @@
 package com.dream.application.batch.match.job.step.reader;
 
 import com.dream.application.common.util.batch.api.ItemBuffer;
-import com.dream.application.batch.match.job.dto.MatchApiResponse;
+import com.dream.application.batch.match.job.dto.response.MatchApiResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.item.ItemReader;
@@ -16,9 +16,6 @@ public class MatchReader implements ItemReader<MatchApiResponse> {
 
     @Override
     public MatchApiResponse read() {
-        if(itemBuffer.isEmpty())
-            return null;
-
         return itemBuffer.poll();
     }
 }
