@@ -21,6 +21,9 @@ public class Team extends FootballEntity {
     @Column(name = "TEAM_ID")
     private Long teamId;
 
+    @Column(name = "CODE")
+    private String code;
+
     @Column(name = "NAME")
     private String name;
 
