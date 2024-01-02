@@ -32,4 +32,11 @@ public class Team extends FootballEntity {
 
     @OneToMany(mappedBy = "team")
     private List<Player> players;
+
+    public Team(Integer fbaId, String code, String name, League league) {
+        this.fbaId = fbaId;
+        this.code = code;
+        this.name = name;
+        this.league = league;
+    }
 }
