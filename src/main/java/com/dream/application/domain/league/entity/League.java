@@ -14,7 +14,8 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class League extends FootballEntity {
 
-    @Id @Column(name = "LEAGUE_ID")
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "LEAGUE_ID")
     private Long leagueId;
 
     @Column(name = "NAME")
@@ -25,4 +26,11 @@ public class League extends FootballEntity {
 
     @Column(name = "LOGO")
     private String logo;
+
+    public League(Integer fbaId, String name, String type, String logo) {
+        this.fbaId = fbaId;
+        this.name = name;
+        this.type = type;
+        this.logo = logo;
+    }
 }
