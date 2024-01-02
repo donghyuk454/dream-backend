@@ -13,8 +13,6 @@ public class TeamDto {
     private String logo;
 
     public Team toTeam(League league) {
-        Team team = new Team(null, code, name, league, null);
-        team.setFbaId(id);
-        return team;
+        return new Team(id, code, name, league);
     }
 }
