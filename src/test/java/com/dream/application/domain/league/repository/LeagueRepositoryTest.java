@@ -27,8 +27,7 @@ class LeagueRepositoryTest {
         //given
         Integer fbaId = 100;
         String name = "name";
-        League league = new League(null, name, "type", "logo");
-        league.setFbaId(fbaId);
+        League league = new League(fbaId, name, "type", "logo");
         leagueRepository.save(league);
 
         //when
