@@ -1,7 +1,6 @@
 package com.dream.application.domain.team.entity;
 
 import com.dream.application.common.entity.FootballEntity;
-import com.dream.application.domain.league.entity.League;
 import com.dream.application.domain.player.entity.Player;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,16 +26,12 @@ public class Team extends FootballEntity {
     @Column(name = "NAME")
     private String name;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private League league;
-
     @OneToMany(mappedBy = "team")
     private List<Player> players;
 
-    public Team(Integer fbaId, String code, String name, League league) {
+    public Team(Integer fbaId, String code, String name) {
         this.fbaId = fbaId;
         this.code = code;
         this.name = name;
-        this.league = league;
     }
 }
