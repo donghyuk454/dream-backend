@@ -4,10 +4,13 @@ import com.dream.application.batch.team.job.dto.response.TeamApiResponse;
 import com.dream.application.batch.team.job.step.processor.TeamProcessor;
 import com.dream.application.batch.team.job.step.reader.TeamReader;
 import com.dream.application.batch.team.job.step.tasklet.TeamApiTasklet;
+import com.dream.application.batch.team.job.step.writer.TeamWriter;
 import com.dream.application.common.util.batch.api.ItemBuffer;
 import com.dream.application.common.util.batch.api.dto.FootballApiInfo;
 import com.dream.application.domain.league.repository.LeagueRepository;
 import com.dream.application.domain.team.entity.Team;
+import com.dream.application.domain.team.repository.TeamLeagueRepository;
+import com.dream.application.domain.team.repository.TeamRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
@@ -18,6 +21,7 @@ import org.springframework.batch.core.configuration.annotation.StepBuilderFactor
 import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemReader;
+import org.springframework.batch.item.ItemWriter;
 import org.springframework.batch.item.database.JpaItemWriter;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -32,13 +36,15 @@ import javax.persistence.EntityManagerFactory;
 @RequiredArgsConstructor
 public class TeamConfig {
 
-    private static final String LEAGUE_ID = "39";
+    private static final String LEAGUE_ID = "342";
 
     private final JobBuilderFactory jobBuilderFactory;
     private final StepBuilderFactory stepBuilderFactory;
     private final FootballApiInfo footballApiInfo;
 
     private final LeagueRepository leagueRepository;
+    private final TeamRepository teamRepository;
+    private final TeamLeagueRepository teamLeagueRepository;
 
     private final EntityManagerFactory entityManagerFactory;
 
@@ -77,7 +83,7 @@ public class TeamConfig {
                 .<TeamApiResponse, Team>chunk(1)
                 .reader(teamReader())
                 .processor(teamProcessor())
-                .writer(teamJpaItemWriter())
+                .writer(teamItemWriter())
                 .transactionManager(transactionManager(entityManagerFactory))
                 .build();
     }
@@ -90,21 +96,19 @@ public class TeamConfig {
 
     @StepScope
     @Bean
-    private ItemReader<TeamApiResponse> teamReader() {
+    public ItemReader<TeamApiResponse> teamReader() {
         return new TeamReader(teamApiResponseItemBuffer());
     }
 
     @StepScope
     @Bean
-    private ItemProcessor<TeamApiResponse, Team> teamProcessor() {
-        return new TeamProcessor(leagueRepository, Integer.parseInt(LEAGUE_ID));
+    public ItemProcessor<TeamApiResponse, Team> teamProcessor() {
+        return new TeamProcessor();
     }
 
     @StepScope
     @Bean
-    public JpaItemWriter<Team> teamJpaItemWriter() {
-        JpaItemWriter<Team> teamJpaItemWriter = new JpaItemWriter<>();
-        teamJpaItemWriter.setEntityManagerFactory(entityManagerFactory);
-        return teamJpaItemWriter;
+    public ItemWriter<Team> teamItemWriter() {
+        return new TeamWriter(leagueRepository, teamRepository, teamLeagueRepository, Integer.parseInt(LEAGUE_ID));
     }
 }
