@@ -1,6 +1,5 @@
 package com.dream.application.batch.team.job.dto.response.detail;
 
-import com.dream.application.domain.league.entity.League;
 import com.dream.application.domain.team.entity.Team;
 import lombok.Data;
 
