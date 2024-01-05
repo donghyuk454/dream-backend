@@ -35,7 +35,7 @@ import javax.persistence.EntityManagerFactory;
 @RequiredArgsConstructor
 public class TeamConfig {
 
-    private static final String LEAGUE_ID = "342";
+    private static final String LEAGUE_ID = "39";
 
     private final JobBuilderFactory jobBuilderFactory;
     private final StepBuilderFactory stepBuilderFactory;
@@ -108,6 +108,6 @@ public class TeamConfig {
     @StepScope
     @Bean
     public ItemWriter<Team> teamItemWriter() {
-        return new TeamWriter(leagueRepository, teamRepository, teamLeagueRepository, Integer.parseInt(LEAGUE_ID));
+        return new TeamWriter(teamRepository, teamLeagueRepository, leagueRepository, Integer.parseInt(LEAGUE_ID));
     }
 }
