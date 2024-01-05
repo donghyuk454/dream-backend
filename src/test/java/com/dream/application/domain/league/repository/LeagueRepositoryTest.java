@@ -27,15 +27,14 @@ class LeagueRepositoryTest {
         //given
         Integer fbaId = 100;
         String name = "name";
-        League league = new League(fbaId, name, "type", "logo");
-        leagueRepository.save(league);
+        League league = new League(fbaId, name, "type", "logo", "country");
+        league = leagueRepository.save(league);
 
         //when
         League result = leagueRepository.findByFbaId(fbaId);
 
         //then
         assertThat(result).isNotNull();
-        assertThat(result.getFbaId()).isEqualTo(fbaId);
-        assertThat(result.getName()).isEqualTo(name);
+        assertThat(result).isEqualTo(league);
     }
 }

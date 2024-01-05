@@ -27,10 +27,14 @@ public class League extends FootballEntity {
     @Column(name = "LOGO")
     private String logo;
 
-    public League(Integer fbaId, String name, String type, String logo) {
+    @Column(name = "COUNTRY")
+    private String country;
+
+    public League(Integer fbaId, String name, String type, String logo, String country) {
         this.fbaId = fbaId;
         this.name = name;
         this.type = type;
         this.logo = logo;
+        this.country = country;
     }
 }

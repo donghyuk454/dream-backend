@@ -10,7 +10,7 @@ public class LeagueDto {
     private String type;
     private String logo;
 
-    public League toLeague() {
-        return new League(id, name, type, logo);
+    public League toLeague(String country) {
+        return new League(id, name, type, logo, country);
     }
 }

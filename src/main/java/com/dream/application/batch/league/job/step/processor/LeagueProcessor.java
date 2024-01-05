@@ -7,9 +7,9 @@ import org.springframework.batch.item.ItemProcessor;
 
 public class LeagueProcessor implements ItemProcessor<LeagueApiResponse, League> {
     @Override
-    public League process(LeagueApiResponse item) throws Exception {
+    public League process(LeagueApiResponse item) {
         LeagueDto leagueDto = item.getLeague();
 
-        return leagueDto.toLeague();
+        return leagueDto.toLeague(item.getCountry().getName());
     }
 }
