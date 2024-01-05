@@ -15,8 +15,9 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class TeamMatch extends BaseEntity {
 
-    @EmbeddedId
-    private TeamMatchId id;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "TEAM_MATCH_ID")
+    private TeamMatchId teamMatchId;
 
     @Column(name = "IS_HOME")
     private Boolean isHome;
@@ -25,12 +26,10 @@ public class TeamMatch extends BaseEntity {
     @JoinColumn(name = "LINEUP_ID")
     private Lineup lineup;
 
-    @MapsId(value = "teamId")
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "TEAM_ID")
     private Team team;
 
-    @MapsId(value = "matchId")
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "MATCH_ID")
     private Match match;
