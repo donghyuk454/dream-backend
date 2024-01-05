@@ -15,6 +15,6 @@ import javax.persistence.MappedSuperclass;
 public class FootballEntity extends BaseEntity {
     // football api 를 통해 얻은 id
     // api 호출 시 해당 id 사용할 것
-    @Column(name = "FBA_ID")
+    @Column(name = "FBA_ID", unique = true)
     protected Integer fbaId;
 }
