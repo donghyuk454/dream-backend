@@ -29,6 +29,8 @@ public class MatchBatchConfig {
     private final StepBuilderFactory stepBuilderFactory;
     private final FootballApiInfo footballApiInfo;
 
+    private static final String LEAGUE_ID = "342";
+
     @Bean
     public ItemBuffer<MatchApiResponse> matchApiResponseItemBuffer() {
         return new ItemBuffer<>();
@@ -37,7 +39,6 @@ public class MatchBatchConfig {
     @Bean
     @Qualifier("matchApiJob")
     public Job matchJob(){
-        log.info("job init");
         return jobBuilderFactory.get("matchJob")
                 .preventRestart()
                 .start(callMatchApiStep())
@@ -67,7 +68,7 @@ public class MatchBatchConfig {
     @StepScope
     @Bean
     public MatchApiTasklet matchApiTasklet() {
-        return new MatchApiTasklet(matchApiResponseItemBuffer(), footballApiInfo, "39");
+        return new MatchApiTasklet(matchApiResponseItemBuffer(), footballApiInfo, LEAGUE_ID);
     }
 
     @StepScope
