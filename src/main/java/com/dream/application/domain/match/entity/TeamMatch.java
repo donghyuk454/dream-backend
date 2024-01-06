@@ -33,4 +33,17 @@ public class TeamMatch extends BaseEntity {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "MATCH_ID", insertable = false, updatable = false)
     private Match match;
+
+    // lineup 이 아직 나오지 않은 경우
+    public TeamMatch(boolean isHome, Team team, Match match) {
+        this.isHome = isHome;
+        this.team = team;
+        this.match = match;
+    }
+
+    // lineup 이 나온 경우
+    public TeamMatch(boolean isHome, Lineup lineup, Team team, Match match) {
+        this(isHome, team, match);
+        this.lineup = lineup;
+    }
 }
