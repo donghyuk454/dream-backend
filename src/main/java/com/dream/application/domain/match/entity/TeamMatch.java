@@ -27,10 +27,10 @@ public class TeamMatch extends BaseEntity {
     private Lineup lineup;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "TEAM_ID")
+    @JoinColumn(name = "TEAM_ID", insertable = false, updatable = false)
     private Team team;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "MATCH_ID")
+    @JoinColumn(name = "MATCH_ID", insertable = false, updatable = false)
     private Match match;
 }
