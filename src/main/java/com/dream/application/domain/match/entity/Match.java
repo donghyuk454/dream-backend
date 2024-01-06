@@ -1,6 +1,7 @@
 package com.dream.application.domain.match.entity;
 
 import com.dream.application.common.entity.FootballEntity;
+import com.dream.application.domain.league.entity.League;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,8 +16,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Match extends FootballEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "MATCH_ID")
     private Long matchId;
 
@@ -25,4 +25,14 @@ public class Match extends FootballEntity {
 
     @OneToMany(mappedBy = "match")
     private Set<TeamMatch> teamMatches;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "LEAGUE_ID")
+    private League league;
+
+    public Match(Integer fbaId, LocalDateTime schedule, League league) {
+        this.fbaId = fbaId;
+        this.schedule = schedule;
+        this.league = league;
+    }
 }
