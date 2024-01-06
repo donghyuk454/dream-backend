@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "LEAGUE")
@@ -29,6 +30,9 @@ public class League extends FootballEntity {
 
     @Column(name = "COUNTRY")
     private String country;
+
+    @OneToMany(mappedBy = "league")
+    private Set<Broadcast> broadcast;
 
     public League(Integer fbaId, String name, String type, String logo, String country) {
         this.fbaId = fbaId;
