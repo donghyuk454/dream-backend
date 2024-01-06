@@ -1,18 +1,35 @@
 package com.dream.application.batch.match.job.step.writer;
 
+import com.dream.application.batch.match.job.step.dto.MatchProcessorResponseDto;
 import com.dream.application.domain.match.entity.Match;
+import com.dream.application.domain.match.entity.TeamMatch;
+import com.dream.application.domain.match.repository.MatchRepository;
+import com.dream.application.domain.match.repository.TeamMatchRepository;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.item.ItemWriter;
-import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Set;
 
 @Slf4j
-@Component
-public class MatchWriter implements ItemWriter<Match> {
+@RequiredArgsConstructor
+public class MatchWriter implements ItemWriter<MatchProcessorResponseDto> {
+
+    private final MatchRepository matchRepository;
+    private final TeamMatchRepository teamMatchRepository;
     @Override
-    public void write(List<? extends Match> items) {
-        log.info("size : " + items.size());
-        log.info("finished");
+    @Transactional
+    public void write(List<? extends MatchProcessorResponseDto> items) {
+        items.forEach(item -> {
+            // match 저장
+            Match match = item.getMatch();
+            matchRepository.save(match);
+
+            // team match 저장
+            Set<TeamMatch> teamMatches = item.getTeamMatches();
+            teamMatches.forEach(teamMatchRepository::save);
+        });
     }
 }
