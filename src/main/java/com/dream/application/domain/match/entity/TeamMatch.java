@@ -17,7 +17,7 @@ public class TeamMatch extends BaseEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "TEAM_MATCH_ID")
-    private TeamMatchId teamMatchId;
+    private Long teamMatchId;
 
     @Column(name = "IS_HOME")
     private Boolean isHome;
@@ -27,11 +27,11 @@ public class TeamMatch extends BaseEntity {
     private Lineup lineup;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "TEAM_ID", insertable = false, updatable = false)
+    @JoinColumn(name = "TEAM_ID")
     private Team team;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "MATCH_ID", insertable = false, updatable = false)
+    @JoinColumn(name = "MATCH_ID")
     private Match match;
 
     // lineup 이 아직 나오지 않은 경우
