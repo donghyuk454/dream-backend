@@ -46,4 +46,11 @@ public class TeamMatch extends BaseEntity {
         this(isHome, team, match);
         this.lineup = lineup;
     }
+
+    public void setMatch(Match match) {
+        this.match = match;
+        if (match.getTeamMatches() != null && !match.getTeamMatches().contains(this)) {
+            match.addTeamMatch(this);
+        }
+    }
 }
