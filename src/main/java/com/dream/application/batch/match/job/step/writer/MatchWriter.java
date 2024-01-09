@@ -19,17 +19,20 @@ public class MatchWriter implements ItemWriter<MatchProcessorResponseDto> {
 
     private final MatchRepository matchRepository;
     private final TeamMatchRepository teamMatchRepository;
+
     @Override
     @Transactional
     public void write(List<? extends MatchProcessorResponseDto> items) {
         items.forEach(item -> {
             // match 저장
-            Match match = item.getMatch();
-            matchRepository.save(match);
+            Match match = matchRepository.save(item.getMatch());
 
             // team match 저장
             Set<TeamMatch> teamMatches = item.getTeamMatches();
-            teamMatches.forEach(teamMatchRepository::save);
+            teamMatches.forEach(teamMatch -> {
+                teamMatch.setMatch(match);
+                teamMatchRepository.save(teamMatch);
+            });
         });
     }
 }
