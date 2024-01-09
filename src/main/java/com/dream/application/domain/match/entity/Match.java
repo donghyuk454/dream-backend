@@ -35,4 +35,11 @@ public class Match extends FootballEntity {
         this.schedule = schedule;
         this.league = league;
     }
+
+    public void addTeamMatch(TeamMatch teamMatch) {
+        teamMatches.add(teamMatch);
+        if (teamMatch.getMatch() == null) {
+            teamMatch.setMatch(this);
+        }
+    }
 }
