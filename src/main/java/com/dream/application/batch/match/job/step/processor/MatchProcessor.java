@@ -27,9 +27,10 @@ public class MatchProcessor implements ItemProcessor<MatchApiResponse, MatchProc
     private final TeamRepository teamRepository;
 
     @Override
-    public MatchProcessorResponseDto process(MatchApiResponse item) {
+    public MatchProcessorResponseDto process(MatchApiResponse item) throws Exception{
         // league 조회
-        League league = leagueRepository.findByFbaId(item.getLeague().getId());
+        League league = leagueRepository.findByFbaId(item.getLeague().getId())
+                .orElseThrow(() -> new Exception(""));
 
         // match 생성
         Match match = item.getFixture().toMatch(league);
@@ -61,8 +62,9 @@ public class MatchProcessor implements ItemProcessor<MatchApiResponse, MatchProc
                 .build();
     }
 
-    private Team getTeam(Integer id) {
-        return teamRepository.findByFbaId(id);
+    private Team getTeam(Integer id) throws Exception{
+        return teamRepository.findByFbaId(id)
+                .orElseThrow(() -> new Exception(""));
     }
 
     public static Set<TeamMatch> createTeamMatchSet(TeamMatch ... teamMatches) {
