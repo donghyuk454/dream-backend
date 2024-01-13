@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.item.ItemWriter;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -22,10 +23,12 @@ public class TeamWriter implements ItemWriter<Team> {
 
     private final Integer leagueFbaId;
 
+    private static final String NO_LEAGUE_MESSAGE = "존재하지 않는 LEAGUE 입니다. FBA_ID : ";
+
     @Override
-    public void write(List<? extends Team> items) throws Exception{
+    public void write(List<? extends Team> items) throws NoSuchElementException {
         League league = leagueRepository.findByFbaId(leagueFbaId)
-                .orElseThrow(() -> new Exception("존재하지 않는 LEAGUE 입니다."));
+                .orElseThrow(() -> new NoSuchElementException( NO_LEAGUE_MESSAGE + leagueFbaId ));
 
         items.forEach(team -> {
             saveTeamIfNotPresent(team);
