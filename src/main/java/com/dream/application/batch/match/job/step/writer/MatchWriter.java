@@ -30,13 +30,18 @@ public class MatchWriter implements ItemWriter<MatchProcessorResponseDto> {
             matchRepository.findByFbaId(match.getFbaId())
                     .ifPresentOrElse(
                             m -> m.syncMatch(match), // 존재할 경우 Sync
-                            () -> matchRepository.save(match) // 존재하지 않을 경우 저장
+                            () -> saveMatchAndTeamMatch(item, match) // 존재하지 않을 경우 match 저장, team match 저장
                     );
-
-            // team match 저장
-            Set<TeamMatch> teamMatches = item.getTeamMatches();
-            teamMatches.forEach(teamMatch -> addTeamMatchIfNotPresent(match, teamMatch));
         });
+    }
+
+    private void saveMatchAndTeamMatch(MatchProcessorResponseDto item, Match match) {
+        // match 저장
+        matchRepository.save(match);
+
+        // team match 저장
+        Set<TeamMatch> teamMatches = item.getTeamMatches();
+        teamMatches.forEach(teamMatch -> addTeamMatchIfNotPresent(match, teamMatch));
     }
 
     private void addTeamMatchIfNotPresent(Match match, TeamMatch teamMatch) {
