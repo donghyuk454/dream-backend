@@ -1,4 +1,5 @@
 package com.dream.application.domain.member.entity;
+
 import com.dream.application.common.entity.BaseEntity;
 import com.dream.application.domain.subscribe.entity.MemberSubscription;
 import lombok.AllArgsConstructor;
@@ -14,10 +15,12 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Member extends BaseEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "MEMBER_ID")
     private Long memberId;
+
+    @Column(name = "MEMBER_Name")
+    private String memberName;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<MemberSubscription> memberSubscription;
