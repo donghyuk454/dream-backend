@@ -6,10 +6,8 @@ import com.dream.application.common.util.batch.api.ItemBuffer;
 import com.dream.application.common.util.batch.api.dto.FootballApiInfo;
 import com.dream.application.common.util.batch.api.tasklet.FootballApiTasklet;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 
 @Slf4j
-@Component
 public class MatchApiTasklet extends FootballApiTasklet<SeasonLeagueParameter, MatchApiResponse> {
 
     private static final String SEASON = "2023";
