@@ -29,10 +29,6 @@ public class AuthController {
     public BaseResponse<LoginResponse> login(@RequestBody @Valid LoginRequest loginRequest,
                                                final HttpSession session) {
         LoginServiceResponse loginResponse = authService.login(new LoginServiceRequest(loginRequest.getMemberId()));
-        
-        if (loginResponse == null) {
-            return BaseResponse.error("존재하지 않는 Member ID 입니다.");
-        }
 
         // session 저장
         SessionMember sessionMember = loginResponse.getSessionMember();
