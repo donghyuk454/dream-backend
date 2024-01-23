@@ -24,8 +24,6 @@ class AuthServiceTest {
     private AuthService authService;
 
     @Autowired
-    private AuthMemberRepository authMemberRepository;
-    @Autowired
     private MemberRepository memberRepository;
 
     @Test
@@ -34,7 +32,7 @@ class AuthServiceTest {
         //given
         String userName = "memberName";
         Member member = new Member(userName);
-        member = memberRepository.save(member);
+        memberRepository.save(member);
         Long memberId = member.getMemberId();
 
         //when
@@ -51,7 +49,7 @@ class AuthServiceTest {
         //given
         String userName = "memberName";
         Member member = new Member(userName);
-        member = memberRepository.save(member);
+        memberRepository.save(member);
         Long memberId = member.getMemberId() + 1;
 
         //when
