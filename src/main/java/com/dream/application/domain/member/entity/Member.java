@@ -24,4 +24,8 @@ public class Member extends BaseEntity {
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<MemberSubscription> memberSubscription;
+
+    public Member(String memberName) {
+        this.memberName = memberName;
+    }
 }
