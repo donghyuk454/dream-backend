@@ -14,7 +14,7 @@ public class AuthService {
 
     private final AuthMemberRepository authMemberRepository;
 
-    public LoginServiceResponse login(LoginServiceRequest loginRequest) {
+    public LoginServiceResponse login(LoginServiceRequest loginRequest) throws DreamException {
         Member member = authMemberRepository.findById(loginRequest.getMemberId())
                 .orElseThrow(() -> new DreamException("member.notfound.error"));
 
