@@ -31,7 +31,7 @@ class LeagueRepositoryTest {
         league = leagueRepository.save(league);
 
         //when
-        League result = leagueRepository.findByFbaId(fbaId);
+        League result = leagueRepository.findByFbaId(fbaId).get();
 
         //then
         assertThat(result).isNotNull();
