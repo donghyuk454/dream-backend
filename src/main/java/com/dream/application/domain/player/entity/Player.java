@@ -1,7 +1,6 @@
 package com.dream.application.domain.player.entity;
 
 import com.dream.application.domain.team.entity.Team;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -10,7 +9,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "PLAYER")
 @Getter
-@AllArgsConstructor
 @NoArgsConstructor
 public class Player {
     @Id
@@ -24,4 +22,13 @@ public class Player {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "TEAM_ID")
     private Team team;
+
+    public Player(PlayerDetails details) {
+        this.playerDetails = details;
+    }
+
+    public Player(PlayerDetails details, Team team) {
+        this.playerDetails = details;
+        this.team = team;
+    }
 }
