@@ -23,9 +23,13 @@ public class Member extends BaseEntity {
     private String memberName;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<MemberSubscription> memberSubscription;
+    private List<MemberSubscription> memberSubscriptions;
 
     public Member(String memberName) {
         this.memberName = memberName;
+    }
+
+    public void subscribe(MemberSubscription memberSubscription) {
+        memberSubscriptions.add(memberSubscription);
     }
 }
