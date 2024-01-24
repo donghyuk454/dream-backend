@@ -2,7 +2,6 @@ package com.dream.application.domain.subscribe.entity;
 
 import com.dream.application.common.entity.BaseEntity;
 import com.dream.application.domain.player.entity.Player;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -12,7 +11,6 @@ import java.util.List;
 @Entity
 @Table(name = "SUBSCRIPTION")
 @Getter
-@AllArgsConstructor
 @NoArgsConstructor
 public class Subscription extends BaseEntity {
     @Id
@@ -26,4 +24,8 @@ public class Subscription extends BaseEntity {
     @OneToOne
     @JoinColumn(name = "PLAYER_ID")
     private Player player;
+
+    public Subscription(Player player) {
+        this.player = player;
+    }
 }
