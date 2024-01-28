@@ -2,11 +2,9 @@ package com.dream.application.domain.member.service;
 
 import com.dream.application.common.exception.DreamException;
 import com.dream.application.domain.member.entity.Member;
-import com.dream.application.domain.member.repository.AuthMemberRepository;
 import com.dream.application.domain.member.repository.MemberRepository;
 import com.dream.application.domain.member.service.dto.request.LoginServiceRequest;
 import com.dream.application.domain.member.service.dto.response.LoginServiceResponse;
-import org.junit.Before;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,5 +56,4 @@ class AuthServiceTest {
                 ()->authService.login(new LoginServiceRequest(memberId)),
                 "member.notfound.error");
     }
-
 }
