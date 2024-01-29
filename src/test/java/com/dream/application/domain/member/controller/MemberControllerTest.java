@@ -1,11 +1,9 @@
 package com.dream.application.domain.member.controller;
 
-import com.dream.application.common.exception.DreamException;
 import com.dream.application.common.session.SessionConst;
 import com.dream.application.domain.member.dto.SessionMember;
 import com.dream.application.domain.member.service.MemberService;
 import com.dream.application.domain.member.service.dto.response.FindMemberServiceResponse;
-import com.dream.application.web.auth.annotation.LoginMember;
 import com.dream.application.web.auth.interceptor.LoginInterceptor;
 import com.dream.application.web.exception.ExceptionHandlers;
 import org.junit.jupiter.api.BeforeEach;
