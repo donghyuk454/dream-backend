@@ -1,5 +1,6 @@
 package com.dream.application.web.auth.interceptor;
 
+import com.dream.application.common.session.SessionConst;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +18,6 @@ public class LoginInterceptor implements HandlerInterceptor {
     }
 
     private boolean isLoggedIn(HttpServletRequest request) {
-        return request.getSession().getAttribute("memberLongin") != null;
+        return request.getSession().getAttribute(SessionConst.LOGIN_SESSION_KEY) != null;
     }
 }
