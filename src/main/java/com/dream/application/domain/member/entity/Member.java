@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -26,7 +27,12 @@ public class Member extends BaseEntity {
     private List<MemberSubscription> memberSubscriptions;
 
     public Member(String memberName) {
+        this(memberName, new ArrayList<>());
+    }
+
+    protected Member(String memberName, List<MemberSubscription> memberSubscriptions) {
         this.memberName = memberName;
+        this.memberSubscriptions = memberSubscriptions;
     }
 
     public void subscribe(MemberSubscription memberSubscription) {
