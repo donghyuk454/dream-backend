@@ -4,6 +4,7 @@ import com.dream.application.common.session.SessionConst;
 import com.dream.application.domain.member.dto.SessionMember;
 import com.dream.application.domain.member.service.MemberService;
 import com.dream.application.domain.member.service.dto.response.FindMemberServiceResponse;
+import com.dream.application.domain.member.service.dto.response.PlayerInfoDto;
 import com.dream.application.web.auth.interceptor.LoginInterceptor;
 import com.dream.application.web.exception.ExceptionHandlers;
 import org.junit.jupiter.api.BeforeEach;
@@ -46,6 +47,10 @@ class MemberControllerTest {
     private static final String BASE_URL = "/api/v1/members";
     private static final String LOGIN_URL = "/api/v1/auth/login";
 
+    PlayerInfoDto player1 = new PlayerInfoDto(1L, "손흥민");;
+    PlayerInfoDto player2 = new PlayerInfoDto(2L, "김민재");
+
+
     @BeforeEach
     public void setup() {
         this.mvc = MockMvcBuilders.standaloneSetup(memberController)
@@ -62,7 +67,8 @@ class MemberControllerTest {
         //given
         Long memberId = 1L;
         String memberName = "name";
-        List<String> players = List.of("김민재","손흥민");
+
+        List<PlayerInfoDto> players = List.of(player1,player2);
 
         MockHttpSession session = new MockHttpSession();
         session.setAttribute(SessionConst.LOGIN_SESSION_KEY, new SessionMember(memberId, memberName));
@@ -79,8 +85,10 @@ class MemberControllerTest {
                 .andExpect(jsonPath("$.data.memberId").value(memberId))
                 .andExpect(jsonPath("$.data.memberName").value(memberName))
                 .andExpect(jsonPath("$.data.subscription", hasSize(2)))
-                .andExpect(jsonPath("$.data.subscription[0].playerName").value("김민재"))
-                .andExpect(jsonPath("$.data.subscription[1].playerName").value("손흥민"));
+                .andExpect(jsonPath("$.data.subscription[0].playerId").value(1))
+                .andExpect(jsonPath("$.data.subscription[0].playerName").value("손흥민"))
+                .andExpect(jsonPath("$.data.subscription[1].playerId").value(2))
+                .andExpect(jsonPath("$.data.subscription[1].playerName").value("김민재"));
     }
 
     @Test
@@ -89,7 +97,7 @@ class MemberControllerTest {
         //given
         Long memberId = 1L;
         String memberName = "name";
-        List<String> players = List.of("김민재","손흥민");
+        List<PlayerInfoDto> players = List.of(player1, player2);
 
         when(memberService.findMemberWithSubscription(any()))
                 .thenReturn(new FindMemberServiceResponse(1L, memberName, players));
@@ -107,7 +115,7 @@ class MemberControllerTest {
         //given
         Long memberId = 1L;
         String memberName = "name";
-        List<String> players = new ArrayList<>();
+        List<PlayerInfoDto> players = new ArrayList<>();
 
         MockHttpSession session = new MockHttpSession();
         session.setAttribute(SessionConst.LOGIN_SESSION_KEY, new SessionMember(memberId, memberName));

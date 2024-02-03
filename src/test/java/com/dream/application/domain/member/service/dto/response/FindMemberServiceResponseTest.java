@@ -34,8 +34,9 @@ class FindMemberServiceResponseTest {
         //then
         assertThat(serviceResponse.getMemberId()).isEqualTo(member.getMemberId());
         assertThat(serviceResponse.getMemberName()).isEqualTo(member.getMemberName());
-        assertThat(serviceResponse.getPlayers()).hasSize(2);
-        assertThat(serviceResponse.getPlayers()).contains("손흥민", "김민재");
+        assertThat(serviceResponse.getPlayersInfo()).hasSize(2);
+        assertThat(serviceResponse.getPlayersInfo().stream().map(PlayerInfoDto::getPlayerName).toList())
+                .contains("손흥민", "김민재");
     }
 
 }
