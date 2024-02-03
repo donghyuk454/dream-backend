@@ -14,9 +14,9 @@ public class FindMemberResponse {
     private final List<FindMemberSubscriptionResponse> subscription;
 
     public static FindMemberResponse of(FindMemberServiceResponse response) {
-        List<FindMemberSubscriptionResponse> subscriptionResponses = response.getPlayers()
+        List<FindMemberSubscriptionResponse> subscriptionResponses = response.getPlayersInfo()
                 .stream()
-                .map(FindMemberSubscriptionResponse::new)
+                .map(FindMemberSubscriptionResponse::of)
                 .toList();
 
         return new FindMemberResponse(response.getMemberId(), response.getMemberName(), subscriptionResponses);
