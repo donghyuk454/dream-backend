@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -33,5 +34,12 @@ public class Team extends FootballEntity {
         this.fbaId = fbaId;
         this.code = code;
         this.name = name;
+        players = new ArrayList<>();
+    }
+
+    public void addPlayer(Player player){
+        players.add(player);
+        if (!player.getTeam().equals(this))
+            player.changeTeam(this);
     }
 }
