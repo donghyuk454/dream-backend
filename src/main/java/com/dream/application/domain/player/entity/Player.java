@@ -31,4 +31,10 @@ public class Player {
         this.playerDetails = details;
         this.team = team;
     }
+
+    public void changeTeam(Team team) {
+        this.team = team;
+        if (!team.getPlayers().contains(this))
+            team.addPlayer(this);
+    }
 }
