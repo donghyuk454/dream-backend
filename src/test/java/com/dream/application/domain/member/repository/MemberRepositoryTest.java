@@ -52,7 +52,7 @@ class MemberRepositoryTest {
         subscriptionRepository.save(subscription2);
 
         String memberName = "name";
-        Member member = new Member("name");
+        Member member = new Member(memberName);
         memberRepository.save(member);
 
         MemberSubscription memberSubscription1 = new MemberSubscription(member, subscription1);
