@@ -52,8 +52,8 @@ public class MatchWriter implements ItemWriter<MatchProcessorResponseDto> {
             teamMatch.setMatch(match);
             teamMatchRepository.save(teamMatch);
             log.info("TEAM_MATCH 추가. TEAM_ID : {}, MATCH_ID : {}",
-                    team.getTeamId(),
-                    match.getMatchId());
+                    team.getId(),
+                    match.getId());
         }
     }
 }

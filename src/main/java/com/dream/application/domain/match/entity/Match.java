@@ -19,7 +19,7 @@ import java.util.Set;
 public class Match extends FootballEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "MATCH_ID")
-    private Long matchId;
+    private Long id;
 
     @Column(name = "SCHEDULE")
     private LocalDateTime schedule;
@@ -39,7 +39,11 @@ public class Match extends FootballEntity {
     }
 
     public void addTeamMatch(TeamMatch teamMatch) {
+        if (teamMatches.contains(teamMatch))
+            return;
+
         teamMatches.add(teamMatch);
+
         if (teamMatch.getMatch() == null) {
             teamMatch.setMatch(this);
         }

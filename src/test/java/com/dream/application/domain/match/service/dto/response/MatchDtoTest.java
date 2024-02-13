@@ -30,7 +30,7 @@ class MatchDtoTest {
         MatchDto matchDto = new MatchDto(match);
 
         //then
-        assertThat(matchDto.getMatchId()).isEqualTo(match.getMatchId());
+        assertThat(matchDto.getMatchId()).isEqualTo(match.getId());
         assertThat(matchDto.getLeague()).isEqualTo(league.getName());
         assertThat(matchDto.getHome()).isEqualTo(home.getName());
         assertThat(matchDto.getAway()).isEqualTo(away.getName());

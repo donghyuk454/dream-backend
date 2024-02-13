@@ -16,7 +16,7 @@ public class MatchDto {
     private final LocalDateTime schedule;
 
     public MatchDto(Match match) {
-        this(match.getMatchId(),
+        this(match.getId(),
                 match.getLeague().getName(),
                 match.getTeamName(true),
                 match.getTeamName(false),
