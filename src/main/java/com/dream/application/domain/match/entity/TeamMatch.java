@@ -38,7 +38,7 @@ public class TeamMatch extends BaseEntity {
     public TeamMatch(boolean isHome, Team team, Match match) {
         this.isHome = isHome;
         this.team = team;
-        this.match = match;
+        setMatch(match);
     }
 
     // lineup 이 나온 경우
