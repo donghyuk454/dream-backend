@@ -47,7 +47,7 @@ public class TeamWriter implements ItemWriter<Team> {
         teamLeagueRepository.save(teamLeague);
 
         log.info("신규 생성된 TEAM_LEAGUE 입니다. TEAM_ID : {}, LEAGUE_ID : {}",
-                teamLeague.getTeam().getTeamId(),
+                teamLeague.getTeam().getId(),
                 teamLeague.getLeague().getLeagueId());
     }
 

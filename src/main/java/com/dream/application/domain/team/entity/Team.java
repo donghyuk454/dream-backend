@@ -19,7 +19,7 @@ public class Team extends FootballEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "TEAM_ID")
-    private Long teamId;
+    private Long id;
 
     @Column(name = "CODE")
     private String code;
