@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -34,6 +35,7 @@ public class Match extends FootballEntity {
         this.fbaId = fbaId;
         this.schedule = schedule;
         this.league = league;
+        teamMatches = new HashSet<>();
     }
 
     public void addTeamMatch(TeamMatch teamMatch) {
@@ -46,5 +48,14 @@ public class Match extends FootballEntity {
     public void syncMatch(Match match) {
         this.schedule = match.getSchedule();
         this.league = match.league;
+    }
+
+    public String getTeamName(Boolean isHome) {
+        for (TeamMatch teamMatch : teamMatches) {
+            if (isHome.equals(teamMatch.getIsHome())) {
+                return teamMatch.getTeam().getName();
+            }
+        }
+        return null;
     }
 }
