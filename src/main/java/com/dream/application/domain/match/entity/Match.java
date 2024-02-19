@@ -5,6 +5,7 @@ import com.dream.application.domain.league.entity.League;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -22,6 +23,7 @@ public class Match extends FootballEntity {
     private Long id;
 
     @Column(name = "SCHEDULE")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime schedule;
 
     @OneToMany(mappedBy = "match")
