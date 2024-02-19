@@ -1,14 +1,13 @@
 package com.dream.application.domain.match.service.dto.response;
 
 import com.dream.application.domain.match.entity.Match;
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
 @Getter
-@RequiredArgsConstructor(access = AccessLevel.PROTECTED)
+@RequiredArgsConstructor
 public class MyPlayerMatchesServiceResponse {
     private final Long playerId;
     private final List<MatchDto> matches;
