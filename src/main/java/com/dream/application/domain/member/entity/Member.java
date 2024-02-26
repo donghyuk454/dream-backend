@@ -20,17 +20,21 @@ public class Member extends BaseEntity {
     @Column(name = "MEMBER_ID")
     private Long memberId;
 
+    @Column(name = "EMAIL", unique = true, updatable = false)
+    private String email;
+
     @Column(name = "MEMBER_NAME")
     private String memberName;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<MemberSubscription> memberSubscriptions;
 
-    public Member(String memberName) {
-        this(memberName, new ArrayList<>());
+    public Member(String email, String memberName) {
+        this(email, memberName, new ArrayList<>());
     }
 
-    protected Member(String memberName, List<MemberSubscription> memberSubscriptions) {
+    protected Member(String email, String memberName, List<MemberSubscription> memberSubscriptions) {
+        this.email = email;
         this.memberName = memberName;
         this.memberSubscriptions = memberSubscriptions;
     }
