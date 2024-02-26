@@ -1,15 +1,16 @@
 package com.dream.application.domain.member.controller;
 
 import com.dream.application.common.response.BaseResponse;
+import com.dream.application.domain.member.controller.dto.request.AddMemberRequest;
+import com.dream.application.domain.member.controller.dto.response.AddMemberResponse;
 import com.dream.application.domain.member.controller.dto.response.FindMemberResponse;
 import com.dream.application.domain.member.service.MemberService;
+import com.dream.application.domain.member.service.dto.request.AddMemberServiceRequest;
 import com.dream.application.domain.member.service.dto.request.FindMemberServiceRequest;
+import com.dream.application.domain.member.service.dto.response.AddMemberServiceResponse;
 import com.dream.application.domain.member.service.dto.response.FindMemberServiceResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/members")
@@ -24,5 +25,13 @@ public class MemberController {
                 memberService.findMemberWithSubscription(new FindMemberServiceRequest(memberId));
 
         return BaseResponse.success(FindMemberResponse.of(serviceResponse));
+    }
+
+    @PostMapping()
+    public BaseResponse<AddMemberResponse> addMember(AddMemberRequest request) {
+        AddMemberServiceResponse addMemberServiceResponse =
+                memberService.addMember(new AddMemberServiceRequest(request.getEmail(), request.getName()));
+
+        return BaseResponse.success(new AddMemberResponse(addMemberServiceResponse.getMemberId()));
     }
 }
