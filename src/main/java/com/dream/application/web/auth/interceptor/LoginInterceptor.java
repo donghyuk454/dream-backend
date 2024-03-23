@@ -5,6 +5,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class LoginInterceptor implements HandlerInterceptor {
 
@@ -18,6 +19,7 @@ public class LoginInterceptor implements HandlerInterceptor {
     }
 
     private boolean isLoggedIn(HttpServletRequest request) {
-        return request.getSession().getAttribute(SessionConst.LOGIN_SESSION_KEY) != null;
+        HttpSession session = request.getSession(false);
+        return session != null && session.getAttribute(SessionConst.LOGIN_SESSION_KEY) != null;
     }
 }
