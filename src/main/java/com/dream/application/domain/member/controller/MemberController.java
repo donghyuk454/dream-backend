@@ -12,6 +12,8 @@ import com.dream.application.domain.member.service.dto.response.FindMemberServic
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/api/v1/members")
 @RequiredArgsConstructor
@@ -28,7 +30,7 @@ public class MemberController {
     }
 
     @PostMapping()
-    public BaseResponse<AddMemberResponse> addMember(AddMemberRequest request) {
+    public BaseResponse<AddMemberResponse> addMember(@RequestBody @Valid AddMemberRequest request) {
         AddMemberServiceResponse addMemberServiceResponse =
                 memberService.addMember(new AddMemberServiceRequest(request.getEmail(), request.getName()));
 
