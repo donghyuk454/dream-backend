@@ -11,6 +11,7 @@ import java.io.Serializable;
 public class SessionMember implements Serializable {
 
     private Long memberId;
+    private String email;
     private String username;
 
     @Serial

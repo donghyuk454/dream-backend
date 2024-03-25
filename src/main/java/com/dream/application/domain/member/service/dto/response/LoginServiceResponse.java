@@ -11,6 +11,6 @@ public class LoginServiceResponse {
     private SessionMember sessionMember;
 
     public static LoginServiceResponse of(Member member) {
-        return new LoginServiceResponse(new SessionMember(member.getMemberId(), member.getMemberName()));
+        return new LoginServiceResponse(new SessionMember(member.getMemberId(), member.getEmail(), member.getMemberName()));
     }
 }
