@@ -13,6 +13,13 @@ public class ExceptionHandlers {
 
     @ResponseBody
     @ExceptionHandler(DreamException.class)
+    public BaseResponse<String> handleDreamException(Exception e){
+        log.info("에러 발생 message = {}", e.getMessage());
+        return BaseResponse.error(e.getMessage());
+    }
+
+    @ResponseBody
+    @ExceptionHandler(Exception.class)
     public BaseResponse<String> handleException(Exception e){
         log.info("에러 발생 message = {}", e.getMessage());
         return BaseResponse.error(e.getMessage());
